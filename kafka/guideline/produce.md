@@ -18,7 +18,7 @@ layout:
 
 <div align="left" data-full-width="false">
 
-<figure><img src="../.gitbook/assets/17.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/17.jpg" alt=""><figcaption></figcaption></figure>
 
 </div>
 
@@ -66,7 +66,7 @@ broker希望接收到的消息的键和值都是字节数组。生产者可以�
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/18.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/18.jpg" alt=""><figcaption></figcaption></figure>
 
 </div>
 

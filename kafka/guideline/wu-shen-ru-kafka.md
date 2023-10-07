@@ -73,7 +73,7 @@ broker会在它监听的每一个端口上运行一个**接收器线程**，这�
 
 <div align="left">
 
-<figure><img src="../.gitbook/assets/处理请求.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/处理请求.jpg" alt=""><figcaption></figcaption></figure>
 
 </div>
 

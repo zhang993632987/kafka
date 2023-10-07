@@ -96,7 +96,7 @@ Kafka的幂等生产者可以自动检测并解决消息重复问题。
 
 为了支持这种行为，Kafka事务引入了**原子多分区写入**的概念。我们知道，**提交偏移量和生成结果都涉及向分区写入数据，结果会被写入输出主题，偏移量会被写入consumer\_offsets主题**。如果可以**打开一个事务，向这两个主题写入消息，如果两个写入操作都成功就提交事务，如果不成功就中止，并进行重试，那么就会实现我们所追求的精确一次性语义**。
 
-<figure><img src="../.gitbook/assets/原子多分区写入.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/原子多分区写入.jpg" alt=""><figcaption></figcaption></figure>
 
 为了启用事务和执行原子多分区写入，我们使用了**事务性生产者**。事务性生产者实际上就是一个配置了**transactional.id**并用**initTransactions()**方法初始化的Kafka生产者。**与producer.id（由broker自动生成）不同，transactional.id是一个生产者配置参数，在生产者重启之后仍然存在**。实际上，transactional.id主要用于在重启之后识别同一个生产者。broker维护了transactional.id和producer.id之间的映射关系，如果对一个已有的transactional.id再次调用initTransactions()方法，则生产者将分配到与之前一样的producer.id，而不是一个新的随机数。
 
@@ -224,11 +224,11 @@ Kafka 2.5中引入了除事务ID之外的第二种基于消费者群组元数据
 
 假设主题T1有两个分区，分别是0和1。两个分区分别被同一消费者群组中的两个消费者消费，每个消费者都将消息传给对应的事务性生产者——一个事务ID为A，另一个事务ID为B，它们分别向主题T2的分区0和分区1写入结果。
 
-<figure><img src="../.gitbook/assets/事务性消息处理器.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/事务性消息处理器.jpg" alt=""><figcaption></figcaption></figure>
 
 如果消费者A和生产者A所在的应用程序实例变成“僵尸”，则消费者B将开始读取两个分区。
 
-<figure><img src="../.gitbook/assets/发生再均衡之后的事务性消息处理器.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/发生再均衡之后的事务性消息处理器.jpg" alt=""><figcaption></figcaption></figure>
 
 如果想保证不会有“僵尸”写入分区0，那么消费者B就不能读取分区0以及用事务ID B写入分区0。应用程序需要实例化一个事务ID为A的新生产者，该生产者可以安全地写入分区0，并隔离事务ID为A的旧生产者。
 
