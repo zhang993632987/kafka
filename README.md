@@ -1,3 +1,2 @@
-# kafka
+# kafka 权威指南（第二版）
 
-1111111sdfasdfasdfasdf
