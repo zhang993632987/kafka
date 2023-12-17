@@ -55,9 +55,9 @@ Apache wiki页面上的实验数据表明，在单数据中心环境中，该参
 从0.11版本开始，<mark style="color:blue;">**Kafka支持精确一次性(exactly once)语义**</mark>。
 
 {% hint style="info" %}
-## 提示
+## <mark style="color:blue;">提示</mark>
 
-<mark style="color:purple;">**假设为了最大限度地提升可靠性，你将生产者的acks设置为all，并将delivery.timeout.ms设置为一个比较大的数，允许进行尽可能多的重试。**</mark>
+**假设为了最大限度地提升可靠性，你将生产者的acks设置为all，并将delivery.timeout.ms设置为一个比较大的数，允许进行尽可能多的重试。**
 
 **这些配置可以确保每条消息被写入Kafka至少一次。但在某些情况下，消息有可能被写入Kafka不止一次。**
 
@@ -96,7 +96,7 @@ Apache wiki页面上的实验数据表明，在单数据中心环境中，该参
 <mark style="color:orange;">**broker对可接收的最大消息也有限制(message.max.bytes)，其两边的配置最好是匹配的，以免生产者发送的消息被broker拒绝。**</mark>
 {% endhint %}
 
-## **receive.buffer.bytes和send.buffer.bytes**
+## <mark style="color:blue;">**receive.buffer.bytes**</mark>**和**<mark style="color:blue;">**send.buffer.bytes**</mark>
 
 这两个参数**分别指定了TCP socket接收和发送数据包的缓冲区大小**。
 

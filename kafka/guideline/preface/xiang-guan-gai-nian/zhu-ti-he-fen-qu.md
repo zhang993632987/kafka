@@ -8,11 +8,9 @@ Kafka的消息通过**主题**进行分类。**主题就好比数据库的表或
 * **消息会以**<mark style="color:blue;">**追加**</mark>**的方式被写入分区，然后按照先入先出的顺序读取。**
 
 {% hint style="warning" %}
-## <mark style="color:orange;">注意：</mark>
+## <mark style="color:orange;">注意</mark>
 
-<mark style="color:red;">**由于一个主题一般包含几个分区，因此无法在整个主题范围内保证消息的顺序。**</mark>
-
-<mark style="color:blue;">**但可以保证消息在单个分区内是有序的。**</mark>
+<mark style="color:orange;">**由于一个主题一般包含几个分区，因此无法在整个主题范围内保证消息的顺序。但可以保证消息在单个分区内是有序的。**</mark>
 {% endhint %}
 
 ## 分区

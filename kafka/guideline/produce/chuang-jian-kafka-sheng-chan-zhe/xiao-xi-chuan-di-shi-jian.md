@@ -33,7 +33,7 @@
 
 需要注意的是，这是指生产者在放弃之前等待每个请求的时间，不包括重试、发送之前所花费的时间等。如果设置的值已触及，但服务器没有响应，那么生产者将重试发送，或者执行回调，并传给它一个TimeoutException。
 
-### <mark style="color:blue;">**retries**</mark>**和**<mark style="color:blue;">**retry.backoff.ms**</mark>
+## <mark style="color:blue;">**retries**</mark>**和**<mark style="color:blue;">**retry.backoff.ms**</mark>
 
 KafkaProducer一般会出现两种错误：
 
@@ -43,7 +43,7 @@ KafkaProducer一般会出现两种错误：
 对于可重试错误，**retries参数**可**用于控制生产者在放弃发送并向客户端宣告失败之前可以重试多少次**。在默认情况下，重试时间间隔是100毫秒，但可以**通过retry.backoff.ms参数来控制重试时间间隔**。
 
 {% hint style="warning" %}
-## <mark style="color:orange;">注意：</mark>
+## <mark style="color:orange;">注意</mark>
 
 <mark style="color:orange;">**不建议在当前版本的Kafka中使用retries和retry.backoff.ms参数**</mark><mark style="color:orange;">。</mark>
 

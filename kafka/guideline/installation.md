@@ -2,17 +2,11 @@
 
 ## 目录说明
 
-{% hint style="info" %}
-/opt/module：存放下载的jar包
-
-/opt/software：应用放置于此
-
-/opt/etc/kafka：配置、数据以及日志存放路径（只是为了方便分发所以放到了一个目录下，推荐分开放置）
-
-/opt/etc/kafka/data：持久化的消息日志存放路径
-
-/opt/etc/kafka/logs：运行日志，log4j日志
-{% endhint %}
+* /opt/module：存放下载的jar包
+* /opt/software：应用放置于此
+* /opt/etc/kafka：配置、数据以及日志存放路径（只是为了方便分发所以放到了一个目录下，推荐分开放置）
+* /opt/etc/kafka/data：持久化的消息日志存放路径
+* /opt/etc/kafka/logs：运行日志，log4j日志
 
 ## 下载并解压
 
@@ -74,7 +68,9 @@ zookeeper.connect=hadoop101:2181,hadoop102:2181,hadoop103:2181/kafka
 ```
 
 {% hint style="info" %}
-## <mark style="color:blue;">**要将一个broker加入到集群里，只需要修改三个配置参数：**</mark>
+## <mark style="color:blue;">**提示**</mark>
+
+**要将一个broker加入到集群里，只需要修改三个配置参数：**
 
 1. <mark style="color:blue;">**zookeeper.connect**</mark>：所有broker都必须配置相同的值
 2. <mark style="color:blue;">**broker.id**</mark>：每一个broker都必须有一个唯一的ID
