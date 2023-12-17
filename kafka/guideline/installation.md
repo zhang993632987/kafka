@@ -1,6 +1,6 @@
-# 二、安装
+# 安装
 
-## 1 目录说明
+## 目录说明
 
 {% hint style="info" %}
 /opt/module：存放下载的jar包
@@ -14,7 +14,7 @@
 /opt/etc/kafka/logs：运行日志，log4j日志
 {% endhint %}
 
-## 2 下载并解压
+## 下载并解压
 
 ```bash
 cd /opt/module
@@ -29,7 +29,7 @@ tar -xzv -f kafka_2.12-3.5.1.tgz -C /opt/software/
 ln -s /opt/software/kafka_2.12-3.5.1 /opt/software/kafka
 ```
 
-## 3 配置环境变量
+## 配置环境变量
 
 ```bash
 sudo vim /etc/profile.d/kafka.sh
@@ -40,7 +40,7 @@ KAFKA_HOME=/opt/software/kafka
 export PATH=$PATH:$KAFKA_HOME/bin
 ```
 
-## 4 配置文件
+## 配置文件
 
 ```bash
 mkdir /opt/etc/kafka
@@ -73,13 +73,15 @@ log.dirs=/opt/etc/kafka/data
 zookeeper.connect=hadoop101:2181,hadoop102:2181,hadoop103:2181/kafka
 ```
 
-**要将一个broker加入到集群里，只需要修改三个配置参数：**
+{% hint style="info" %}
+## <mark style="color:blue;">**要将一个broker加入到集群里，只需要修改三个配置参数：**</mark>
 
-1. **zookeeper.connect**：所有broker都必须配置相同的值
-2. **broker.id**：每一个broker都必须有一个唯一的ID
-3. **advertised.listeners：**broker 监听的IP地址和端口
+1. <mark style="color:blue;">**zookeeper.connect**</mark>：所有broker都必须配置相同的值
+2. <mark style="color:blue;">**broker.id**</mark>：每一个broker都必须有一个唯一的ID
+3. <mark style="color:blue;">**advertised.listeners**</mark>**：**broker 监听的IP地址和端口
+{% endhint %}
 
-## 5 集群脚本kf.sh
+## 集群脚本kf.sh
 
 ```bash
 vim ~/bin/kf.sh
