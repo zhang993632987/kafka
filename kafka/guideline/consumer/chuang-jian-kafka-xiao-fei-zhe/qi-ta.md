@@ -8,6 +8,10 @@ group.id不是必需的，它指定了**一个消费者属于哪一个消费者�
 
 这个属性可以是任意具有唯一性的字符串，它**为消费者指定了一个固定的唯一值**。
 
+{% content-ref url="../xiang-guan-gai-nian/qun-zu-gu-ding-cheng-yuan.md" %}
+[qun-zu-gu-ding-cheng-yuan.md](../xiang-guan-gai-nian/qun-zu-gu-ding-cheng-yuan.md)
+{% endcontent-ref %}
+
 ## <mark style="color:blue;">**partition.assignment.strategy**</mark>
 
 PartitionAssignor根据给定的消费者和它们订阅的主题来决定哪些分区应该被分配给哪个消费者。Kafka提供了几种默认的分配策略。
