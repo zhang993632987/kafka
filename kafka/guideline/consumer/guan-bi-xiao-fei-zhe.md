@@ -1,6 +1,24 @@
-# 4.5 关闭消费者
+# 关闭消费者
 
-**如果你确定马上要关闭消费者（即使消费者还在等待一个poll()返回），那么可以在另一个线程中调用**<mark style="color:blue;">**consumer.wakeup()**</mark>。如果轮询循环运行在主线程中，那么可以在ShutdownHook里调用这个方法。需要注意的是，<mark style="color:orange;">**consumer.wakeup()是消费者唯一一个可以在其他线程中安全调用的方法**</mark>。调用consumer.wakeup()会导致poll()抛出<mark style="color:blue;">**WakeupException**</mark>，如果调用consumer.wakeup()时线程没有在轮询，那么异常将在下一次调用poll()时抛出。不一定要处理WakeupException，但在**退出线程之前必须调用consumer.close()**。**消费者在被关闭时会提交还没有提交的偏移量，并向消费者协调器发送消息，告知自己正在离开群组。协调器会立即触发再均衡，被关闭的消费者所拥有的分区将被重新分配给群组里其他的消费者，不需要等待会话超时。**
+<mark style="color:orange;">**consumer.wakeup()是消费者唯一一个可以在其他线程中安全调用的方法：**</mark>
+
+* **如果你确定马上要关闭消费者（即使消费者还在等待一个poll()返回），那么可以在另一个线程中调用consumer.wakeup()**。
+* **如果轮询循环运行在主线程中，那么可以在ShutdownHook里调用这个方法。**
+
+{% hint style="info" %}
+## <mark style="color:orange;">注意</mark>
+
+<mark style="color:orange;">**调用consumer.wakeup()会导致poll()抛出WakeupException，如果调用consumer.wakeup()时线程没有在轮询，那么异常将在下一次调用poll()时抛出。**</mark>
+
+不一定要处理WakeupException，但在<mark style="color:orange;">**退出线程之前必须调用consumer.close()**</mark>。
+
+* **消费者在被关闭时会提交还没有提交的偏移量，并向消费者协调器发送消息，告知自己正在离开群组。**
+* **协调器会立即触发再均衡，被关闭的消费者所拥有的分区将被重新分配给群组里其他的消费者，不需要等待会话超时。**
+{% endhint %}
+
+<details>
+
+<summary><mark style="color:purple;">示例</mark></summary>
 
 ```java
 Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -42,3 +60,6 @@ try {
    System.out.println("Closed consumer and we are done");
 }
 ```
+
+</details>
+
