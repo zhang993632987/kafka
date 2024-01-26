@@ -1,6 +1,6 @@
 # 处理请求
 
-<figure><img src="../../../.gitbook/assets/处理请求.jpg" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/处理请求.jpg" alt="" width="563"><figcaption></figcaption></figure>
 
 <mark style="color:blue;">**broker会在它监听的每一个端口上运行一个接收器线程**</mark>，这个线程会创建一个<mark style="color:blue;">**连接**</mark>，并把它交给处理器线程处理。处理器线程（也叫网络线程）的数量是可配置的。<mark style="color:blue;">**网络线程负责从客户端获取请求，把它们放进请求队列，然后从响应队列取出响应，把它们发送给客户端。**</mark>
 

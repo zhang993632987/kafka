@@ -2,11 +2,11 @@
 
 ## 目录说明
 
-* /opt/module：存放下载的jar包
+* /opt/module：存放下载的 jar 包
 * /opt/software：应用放置于此
 * /opt/etc/kafka：配置、数据以及日志存放路径（只是为了方便分发所以放到了一个目录下，推荐分开放置）
 * /opt/etc/kafka/data：持久化的消息日志存放路径
-* /opt/etc/kafka/logs：运行日志，log4j日志
+* /opt/etc/kafka/logs：运行日志，log4j 日志
 
 ## 下载并解压
 
@@ -44,18 +44,15 @@ mv /opt/software/kafka/config /opt/etc/kafka/
 ln -s /opt/etc/kafka/config /opt/software/kafka/config
 ```
 
-{% hint style="warning" %}
-```bash
-mv /opt/software/kafka/config /opt/etc/kafka/
-```
+> <pre class="language-bash"><code class="lang-bash"><strong>mv /opt/software/kafka/config /opt/etc/kafka/
+> </strong></code></pre>
+>
+> 之所以采用外置配置文件，是为了方便 kafka 服务的升级与替换。
 
-之所以采用外置配置文件，是为了方便kafka服务的升级与替换。
-{% endhint %}
-
-修改<mark style="color:blue;">**server.properies**</mark>中的配置内容：
+修改 <mark style="color:blue;">**server.properies**</mark> 中的配置内容：
 
 ```properties
-# 集群中个各个broker必须拥有不同的id
+# 集群中个各个 broker 必须拥有不同的 id
 broker.id=3
   ​
 listeners=PLAINTEXT://0.0.0.0:9092
@@ -70,11 +67,11 @@ zookeeper.connect=hadoop101:2181,hadoop102:2181,hadoop103:2181/kafka
 {% hint style="info" %}
 ## <mark style="color:blue;">**提示**</mark>
 
-**要将一个broker加入到集群里，只需要修改三个配置参数：**
+**要将一个 broker 加入到集群里，只需要修改以下三个配置参数：**
 
-1. <mark style="color:blue;">**zookeeper.connect**</mark>：所有broker都必须配置相同的值
-2. <mark style="color:blue;">**broker.id**</mark>：每一个broker都必须有一个唯一的ID
-3. <mark style="color:blue;">**advertised.listeners**</mark>**：**broker 监听的IP地址和端口
+* [x] <mark style="color:blue;">**zookeeper.connect**</mark>：所有 broker 都必须配置相同的值
+* [x] <mark style="color:blue;">**broker.id**</mark>：每一个 broker 都必须有一个唯一的 ID
+* [x] <mark style="color:blue;">**advertised.listeners**</mark>**：**broker 监听的 IP 地址和端口
 {% endhint %}
 
 ## 集群脚本kf.sh
