@@ -1,6 +1,6 @@
 # 不彻底的首领选举
 
-<mark style="color:blue;">**unclean.leader.election.enable**</mark> 只能在broker级别（实际上是在集群范围内）配置，它的默认值是 false。
+<mark style="color:blue;">**unclean.leader.election.enable**</mark> 只能在 broker 级别（实际上是在集群范围内）配置，它的**默认值是  false。**
 
 当分区的首领不可用时，一个同步副本将被选举为新首领。如果在选举过程中未丢失数据，也就是说被选为新首领的同步副本包含了已提交的数据，那么这个选举就是**“彻底”**的。
 

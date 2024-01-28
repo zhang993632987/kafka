@@ -84,4 +84,3 @@
 
 * [Listener](group-1/listener.md)
 * [kafka面试题](group-1/review.md)
-* [kafka 权威指南（第二版）](group-1/guideline.md)
