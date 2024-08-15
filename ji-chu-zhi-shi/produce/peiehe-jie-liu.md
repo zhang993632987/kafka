@@ -2,12 +2,12 @@
 
 Kafka 可以限制生产消息和消费消息的速率，这是通过配额机制来实现的。
 
-<mark style="color:blue;">**Kafka 提供了 3种配额类型：生产、消费和请求**</mark>。
+<mark style="color:blue;">**Kafka 提供了 3 种配额类型：生产、消费和请求**</mark>。
 
 * **生产配额和消费配额限制了客户端发送和接收数据的速率（以字节 / 秒为单位）**。
 * **请求配额限制了 broker 用于处理客户端请求的时间百分比。**
 
-**可以为所有客户端（使用默认配额）、特定客户端、特定用户，或特定客户端及特定用户设置配额。**
+**可以为所有客户端（使用默认配额）、特定客户端、特定用户、或特定客户端及特定用户设置配额。**
 
 > **特定用户的配额只在集群配置了安全特性并对客户端进行了身份验证后才有效。**
 
@@ -46,8 +46,6 @@ bin/kafka-configs --bootstrap-server localhost:9092 --alter --add-config 'consum
 节流行为通过 **produce-throttle-time-avg、produce-throttle-time-max、fetch-throttle-time-avg 和fetch-throttle-time-max** 暴露给客户端，这几个参数是**生产请求和消费请求因节流而被延迟的平均时间和最长时间**。需要注意的是，这些时间对应的是生产消息和消费消息的吞吐量配额、请求时间配额，或两者兼而有之。其他类型的客户端请求只会因触及请求时间配额而被节流，这些节流行为也会通过其他类似的指标暴露出来。
 
 {% hint style="info" %}
-## <mark style="color:blue;">提示</mark>
-
 **如果异步调用 Producer.send()，并且发送速率超过了 broker 能够接受的速率**（无论是由于配额的限制还是由于处理能力不足），那么消息将会被放入客户端的内存队列。
 
 * <mark style="color:blue;">**如果发送速率一直快于接收速率，那么客户端最终将耗尽内存缓冲区，并阻塞后续的Producer.send() 调用。**</mark>

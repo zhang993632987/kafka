@@ -7,7 +7,7 @@
   * [Kafka 的特性](ji-chu-zhi-shi/gai-shu/kafka-de-te-xing.md)
 * [安装](ji-chu-zhi-shi/installation.md)
 * [生产者（Producer）](ji-chu-zhi-shi/produce/README.md)
-  * [创建Kafka生产者](ji-chu-zhi-shi/produce/chuang-jian-kafka-sheng-chan-zhe/README.md)
+  * [创建 Kafka 生产者](ji-chu-zhi-shi/produce/chuang-jian-kafka-sheng-chan-zhe/README.md)
     * [三个必须设置的属性](ji-chu-zhi-shi/produce/chuang-jian-kafka-sheng-chan-zhe/san-ge-bi-xu-she-zhi-de-shu-xing.md)
     * [消息传递时间](ji-chu-zhi-shi/produce/chuang-jian-kafka-sheng-chan-zhe/xiao-xi-chuan-di-shi-jian.md)
     * [其他属性](ji-chu-zhi-shi/produce/chuang-jian-kafka-sheng-chan-zhe/qi-ta-shu-xing.md)

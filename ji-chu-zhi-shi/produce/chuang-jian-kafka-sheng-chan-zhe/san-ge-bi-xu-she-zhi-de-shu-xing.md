@@ -15,8 +15,6 @@
 broker 希望接收到的消息的键和值都是字节数组。生产者可以把任意 Java 对象作为键和值发送给 broker，但它需要知道如何把这些 Java 对象转换成字节数组。
 
 {% hint style="info" %}
-## <mark style="color:orange;">注意：</mark>
-
 <mark style="color:orange;">**必须设置 key.serializer 这个属性，尽管你可能只需要将值发送给 Kafka。**</mark>
 
 **如果只需要发送值，则可以将 Void 作为键的类型，然后将这个属性设置为 VoidSerializer。**

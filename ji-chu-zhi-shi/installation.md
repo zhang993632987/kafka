@@ -65,8 +65,6 @@ zookeeper.connect=hadoop101:2181,hadoop102:2181,hadoop103:2181/kafka
 ```
 
 {% hint style="info" %}
-## <mark style="color:blue;">**提示**</mark>
-
 **要将一个 broker 加入到集群里，只需要修改以下三个配置参数：**
 
 * [x] <mark style="color:blue;">**zookeeper.connect**</mark>：所有 broker 都必须配置相同的值

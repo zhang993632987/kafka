@@ -1,9 +1,9 @@
 # 消息传递时间
 
-从 Kafka 2.1 开始，我们**将 ProduceRecord 的发送时间分成如下两个时间间隔**，它们是被分开处理的：
+从 Kafka 2.1 开始，我们**将 ProducerRecord 的发送时间分成如下两个时间间隔**，它们是被分开处理的：
 
 1. **异步调用 send() 所花费的时间**。**在此期间，调用 send() 的线程将被阻塞。**
-2. 从异步调用 send() 返回到触发回调（不管是成功还是失败）的时间，也就是**从 ProduceRecord 被放到批次中直到 Kafka 成功响应、出现不可恢复异常或发送超时的时间**。
+2. 从异步调用 send() 返回到触发回调（不管是成功还是失败）的时间，也就是**从 ProducerRecord 被放到批次中直到 Kafka 成功响应、出现不可恢复异常或发送超时的时间**。
 
 <div align="left">
 
@@ -25,7 +25,9 @@
 >
 > 如果配置的时间不满足这一点，则会抛出异常。通常，成功发送消息的速度要比 **delivery.timeout.ms** 快得多。
 
-<mark style="color:blue;">**可以将这个参数配置成你愿意等待的最长时间，通常是几分钟，并使用默认的重试次数（几乎无限制）。**</mark>基于这样的配置，只要生产者还有时间（或者在发送成功之前），它都会持续重试。
+{% hint style="info" %}
+<mark style="color:blue;">**可以将这个参数配置成你愿意等待的最长时间，通常是几分钟，并使用默认的重试次数（几乎无限制）。**</mark>基于这样的配置，只要生产者还有时间（在发送成功之前），它都会持续重试。
+{% endhint %}
 
 ## <mark style="color:blue;">**request.timeout.ms**</mark>
 
@@ -37,17 +39,15 @@
 
 KafkaProducer 一般会出现两种错误：
 
-* 一种是**可重试错误**，这种错误可以通过重发消息来解决。例如，对于连接错误，只要再次建立连接就可以解决。对于“not leader for partition”（非分区首领）错误，只要重新为分区选举首领就可以解决，此时元数据也会被刷新。
+* 一种是**可重试错误**，这种错误可以通过重发消息来解决。例如，对于连接错误，只要再次建立连接就可以解决；对于“not leader for partition”（非分区首领）错误，只要重新为分区选举首领就可以解决，此时元数据也会被刷新。
 * 另一种错误则**无法通过重试解决**，比如“Message size too large”（消息太大）。对于这种错误，KafkaProducer 不会进行任何重试，而会立即抛出异常。
 
 对于可重试错误，**retries 参数**可**用于控制生产者在放弃发送并向客户端宣告失败之前可以重试多少次**。在默认情况下，重试时间间隔是 100 毫秒，但可以**通过 retry.backoff.ms 参数来控制重试时间间隔**。
 
 {% hint style="warning" %}
-## <mark style="color:orange;">注意</mark>
-
 <mark style="color:orange;">**不建议在当前版本的 Kafka 中使用 retries 和 retry.backoff.ms 参数**</mark><mark style="color:orange;">。</mark>
 
-相反，你<mark style="color:blue;">**可以测试一下 broker 在发生崩溃之后需要多长时间恢复（也就是直到所有分区都有了首领副本），并设置合理的 delivery.timeout.ms，让重试时间大于 Kafka 集群从崩溃中恢复的时间，以免生产者过早放弃重试。**</mark>
+<mark style="color:blue;">**可以测试一下 broker 在发生崩溃之后需要多长时间恢复（也就是直到所有分区都有了首领副本），并设置合理的 delivery.timeout.ms，让重试时间大于 Kafka 集群从崩溃中恢复的时间，以免生产者过早放弃重试。**</mark>
 {% endhint %}
 
 ## <mark style="color:blue;">**linger.ms**</mark>
