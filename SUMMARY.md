@@ -76,7 +76,7 @@
     * [事务是如何保证精确一次性的](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-shi-ru-he-bao-zheng-jing-que-yi-ci-xing-de.md)
     * [事务不能解决哪些问题](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-bu-neng-jie-jue-na-xie-wen-ti.md)
     * [如何使用事务](ji-chu-zhi-shi/exactly-once/shi-wu/ru-he-shi-yong-shi-wu.md)
-    * [事务ID和隔离](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-id-he-ge-li.md)
+    * [事务 ID 和隔离](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-id-he-ge-li.md)
     * [事务的工作原理](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-de-gong-zuo-yuan-li.md)
     * [事务的性能](ji-chu-zhi-shi/exactly-once/shi-wu/shi-wu-de-xing-neng.md)
 
